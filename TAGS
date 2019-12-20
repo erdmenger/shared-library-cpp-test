@@ -1,0 +1,60 @@
+
+./shared.h,348
+#define SHARED_H SHARED_H2,17
+#    define Export_Flag Export_Flag5,100
+#    define Import_Flag Import_Flag6,146
+#  define Export_FlagExport_Flag8,215
+#  define Import_FlagImport_Flag9,237
+#    define LIB_INIT LIB_INIT13,306
+#    define LIB_FINI LIB_FINI14,361
+#    define LIB_INITLIB_INIT16,421
+#    define LIB_FINILIB_FINI17,442
+
+./testlib.c,550
+#  define dlopen(dlopen17,603
+#  define dlsym(dlsym18,650
+#  define dlerror(dlerror19,696
+static const char *function_names[] =function_names23,748
+#define FUNC_ARRSIZE FUNC_ARRSIZE31,864
+#define LIB_OPEN LIB_OPEN32,887
+#define LIB_WORK LIB_WORK33,908
+#define LIB_CLOSE LIB_CLOSE34,929
+#define OPEN_A(OPEN_A36,951
+#define WORK_A(WORK_A37,1016
+#define CLOSE_A(CLOSE_A38,1071
+static void usage( )usage41,1124
+static void load_funcs(void ** arr, char * lib_name)load_funcs51,1388
+int main(int argc, char ** argv)main105,2866
+
+./obj2.hpp,127
+#define OBJ2_HPPOBJ2_HPP2,17
+static int refCounter2 = 0;refCounter26,56
+class obj2obj28,85
+    int objNum;objNum19,225
+
+./obj1.hpp,211
+#define OBJ1_HPPOBJ1_HPP2,17
+static int   refCounter = 0;refCounter7,76
+class obj1obj19,106
+    int          objNum;objNum22,268
+    obj2        *pObj2;pObj223,293
+    obj2        *pObj3;pObj324,317
+
+./shared.cpp,300
+static obj1 theObj1 = obj1();theObj18,82
+int open( char *in, char **out ) {open11,179
+int work( char *data ) {work22,481
+int close( void ) {close28,678
+void initLib (void) {initLib33,808
+void closeLib (void)closeLib38,941
+void _init (void) {_init44,1076
+void _fini (void)_fini49,1205
+
+./obj1.cpp,94
+obj1::obj1() obj16,61
+obj1::~obj1() ~obj115,251
+obj1::work( char * calledBy )work23,369
+
+./obj2.cpp,50
+obj2::obj2()obj25,41
+obj2::~obj2()~obj212,161

@@ -1,0 +1,16 @@
+**** erde@tdben3 :~/proj/shared-lib/AIX 
+% testlib -lib /home/erde/proj/shared-lib/AIX/libshared.a 
+* initLib() *
+obj1> creating 1/1
+obj2> creating 1/1
+obj2> creating 2/2
+/home/erde/proj/shared-lib/AIX/libshared.a is found and the function pointers: '
+open()' 'work()' 'close()' are loaded.
+-> open(): in = 'String from test program'.
+open successful returned: 'String form lib'.
+-> work(): data: 12345667890ABCD
+-> close()
+unloading library
+obj1> deleting 1/1
+obj2> deleting 1/2
+* closeLib() *

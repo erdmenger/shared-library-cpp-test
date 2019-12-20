@@ -1,0 +1,45 @@
+
+making shared libraries:
+
+** Library entry and exit functions:
+* Linux:
+>>
+  void __attribute__ ((__constructor__)) entryFunction();
+  void __attribute__ ((__destructor__)) exitFunction();
+<<
+You may have as mutch entry / exit function defined as you want.
+
+* AIX
+
+* Solaris
+
+* Tru64
+
+* HP-UX
+
+* Win32 ( 95,.., NT, 2000, ...)
+
+
+** Global Static Objects: - without calling unload()
+
+* Linux
+created before init functions are called
+deleted (dtor called) before fini function
+
+*AIX 4.3.2
+created after init functions
+not deleted (dtor not called) *memleak*
+
+*SunOS
+created before init functions are called
+deleted (dtor called) before fini function
+
+*Tru64
+created *after* init functions are called
+deleted (dtor called) *after* fini function
+
+** Global Static Objects: - without calling unload()
+
+*AIX 4.3.2
+created after init functions
+deleted (dtor called) before fine function

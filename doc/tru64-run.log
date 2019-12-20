@@ -1,0 +1,14 @@
+% OSF1/testlib -lib OSF1/libshared.so 
+* initLib() *
+obj1> creating 1/1
+obj2> creating 1/1
+obj2> creating 2/2
+OSF1/libshared.so is found and the function pointers: 'open()' 'work()' 'close()
+' are loaded.
+-> open(): in = 'String from test program'.
+open successful returned: 'String form lib'.
+-> work(): data: 12345667890ABCD
+-> close()
+* closeLib() *
+obj1> deleting 1/1
+obj2> deleting 1/2

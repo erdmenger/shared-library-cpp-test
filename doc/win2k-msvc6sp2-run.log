@@ -1,0 +1,20 @@
+D:\home\erde\proj\shared-lib\win32\testlib\Debug>testlib
+obj1> creating 1/1
+obj2> creating 1/1
+obj2> creating 2/2
+ DllMain called state >DLL_PROCESS_ATTACHED<
+ DllMain called state >DLL_THREAD_ATTACHED<
+ DllMain called state >DLL_THREAD_DETTACHED<
+ DllMain called state >DLL_PROCESS_DETTACHED<
+shared.dll is found and the function pointers: 'open()' 'work()' 'close()' are l
+oaded.
+-> open(): in = 'String from test program'.
+open successful returned: 'String form lib'.
+-> work(): data: 12345667890ABCD
+-> close()
+unloading library
+ DllMain called state >DLL_PROCESS_DETTACHED<
+obj1> deleting 1/1
+obj2> deleting 1/2
+
+D:\home\erde\proj\shared-lib\win32\testlib\Debug>
