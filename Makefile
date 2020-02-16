@@ -18,15 +18,16 @@ ifeq ($(PLATFORM),AIX)
   LINK_SHARED.cc = makeC++SharedLib_r -p0  -bI:/lib/pse.exp -bmaxdata:0x80000000 -bexpall -b initfini:initLib:closeLib 
 #  POST_LINK.cc = ar -cvr
 #  LIB_POST = .1
-  TEST_LFLAGS+= -ldl
+  TEST_LIBS+= -ldl
   SO = .a
 endif
 
 ifeq ($(PLATFORM),Linux)
   CC = g++
-  LINK_SHARED.cc = cc -shared  -Xlinker -rpath -Xlinker ../lib/i686-pc-linux-gnu -Xlinker -rpath-link -Xlinker ../lib/i686-pc-linux-gnu
+  CFLAGS+= -fPIC
+  LINK_SHARED.cc = g++ -shared -fPIC -Xlinker -rpath -Xlinker ../lib/i686-pc-linux-gnu -Xlinker -rpath-link -Xlinker ../lib/i686-pc-linux-gnu
 # -init initLib -fini closeLib
-  TESTFLAGS+= -ldl
+  TEST_LIBS+= -ldl
 #  CFLAGS += -ldl
   SO = .so
 endif
@@ -36,7 +37,7 @@ ifeq ($(PLATFORM),Darwin)
   LINK_SHARED.cc = cc -shared  -Xlinker -rpath -Xlinker -rpath-link
 # -rpath-link -Xlinker ../lib/i686-pc-linux-gnu
 # -init initLib -fini closeLib
-  TESTFLAGS+= -ldl
+  TEST_LIBS+= -ldl
 #  CFLAGS += -ldl
   SO = .so
 endif
@@ -55,7 +56,7 @@ ifeq ($(PLATFORM),SunOS)
 # -mt -KPIC -w
 #  -z muldefs
 #-z initfirst initLib
-  TESTFLAGS+= -ldl
+  TEST_LIBS+= -ldl
   SO = .so
 endif
 
@@ -92,7 +93,7 @@ shared$(SO) : ${OBJ}
 		$(LINK_SHARED.cc) $(DEBUG) $(OUTPUT_FILE) $(PLATFORM)/lib$(@) ${OBJ};
 
 test: testlib.c
-	$(CC) $(TESTFLAGS) $(CFLAGS) $(OUTPUT_FILE) $(PLATFORM)/testlib$(EXE) $< ${TEST_LIBS};
+	$(CC) $(CFLAGS) $(OUTPUT_FILE) $(PLATFORM)/testlib$(EXE) $< ${TEST_LIBS};
 
 $(PLATFORM)/%.o: %.c
 	$(CC) $(COMPILE_ONLY) $(CFLAGS) $(OUTPUT_FILE) $(@) $<;
