@@ -40,6 +40,10 @@ void closeLib (void)
     printf("* closeLib() *\n");
     return;
 }
+
+ /* at least on Linux these functions are in the C runtime lib */
+#ifndef __linux
+
 /* ----------------------------------------------------------- */
 void _init (void) {
     printf("* _init() *\n");
@@ -51,6 +55,8 @@ void _fini (void)
     printf("* _fini() *\n");
     return;
 }
+#endif
+
 /* ----------------------------------------------------------- */
 
 #if defined (_WIN32)
