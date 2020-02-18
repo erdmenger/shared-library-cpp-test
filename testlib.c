@@ -39,8 +39,8 @@ static const char *function_names[] =
 #define LIB_WORK   1
 #define LIB_CLOSE  2
 
-#define OPEN_A(arr) (*((int(*)(char *, char ** ))arr[LIB_OPEN]))
-#define WORK_A(arr) (*((int(*)(char *))arr[LIB_WORK]))
+#define OPEN_A(arr) (*((int(*)(char const *, char ** ))arr[LIB_OPEN]))
+#define WORK_A(arr) (*((int(*)(char const *))arr[LIB_WORK]))
 #define CLOSE_A(arr) (*((int(*)())arr[LIB_CLOSE]))
 
 
@@ -54,7 +54,7 @@ static void usage( )
  *  loaded.
  * @param arr is an array of function pointers.  Must be SBTFUNC_ARRSIZE long
  */
-static void load_funcs(void ** arr, char * lib_name)
+static void load_funcs(void ** arr, char const * lib_name)
 {
     /*void *libHandle = 0;*/
    int   i;
@@ -133,13 +133,13 @@ int main(int argc, char ** argv)
     int         nounload;
 
 #ifdef _WIN32
-     char          *lib_name = "shared.dll";
+     char const    *lib_name = "shared.dll";
 #else
 #  ifdef _AIX
-     char          *lib_name = "libshared.a";
+     char const    *lib_name = "libshared.a";
 #  else
      /* SUN, LINUX, HP-UP, Tru64, .. */
-     char          *lib_name = "libshared.so";
+     char const    *lib_name = "libshared.so";
 #  endif
 #endif
 
