@@ -33,8 +33,8 @@ ifeq ($(PLATFORM),Linux)
 endif
 
 ifeq ($(PLATFORM),Darwin)
-  CC = g++
-  LINK_SHARED.cc = cc -shared  -Xlinker -rpath -Xlinker -rpath-link
+  CC = gcc
+  LINK_SHARED.cc = g++ -shared  -Xlinker -rpath -Xlinker -rpath-link
 # -rpath-link -Xlinker ../lib/i686-pc-linux-gnu
 # -init initLib -fini closeLib
   TEST_LIBS+= -ldl
