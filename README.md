@@ -10,6 +10,7 @@ HP-UX, Linux, Solaris, Tru64 .
 ```
 % make prepare
 % make
+% make test
 ```
 
 The first call will only create a directory for this plattform
