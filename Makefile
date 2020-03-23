@@ -85,15 +85,21 @@ CFLAGS += $(DEBUG)
 OBJ =  $(PLATFORM)/shared.o $(PLATFORM)/obj1.o $(PLATFORM)/obj2.o
 # Rules:
 
-default: lib test
+default: lib exec
 all: default prepare
 lib: shared$(SO)
 
 shared$(SO) : ${OBJ}
 		$(LINK_SHARED.cc) $(DEBUG) $(OUTPUT_FILE) $(PLATFORM)/lib$(@) ${OBJ};
 
-test: testlib.c
+exec: testlib.c
 	$(CC) $(CFLAGS) $(OUTPUT_FILE) $(PLATFORM)/testlib$(EXE) $< ${TEST_LIBS};
+
+
+test:
+	./$(PLATFORM)/testlib$(EXE) -lib $(PLATFORM)/libshared$(SO);
+
+
 
 $(PLATFORM)/%.o: %.c
 	$(CC) $(COMPILE_ONLY) $(CFLAGS) $(OUTPUT_FILE) $(@) $<;
