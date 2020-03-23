@@ -3,10 +3,10 @@ Is a project to learn about behaviour of shared library entry and exit function 
 
 ## Building
 
-### UNIX:
+### UNIX, Linux, MacOS / Darwin:
 In order to build on a Unix flavour OS issue the following two
 commands. The makefile successfully build on older versions of AIX,
-HP-UX, Linux, Solaris, Tru64 .
+Darwin, HP-UX, Linux, Solaris, Tru64 .
 ```
 % make prepare
 % make
